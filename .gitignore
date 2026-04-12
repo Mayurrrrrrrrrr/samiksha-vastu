@@ -1,0 +1,4 @@
+﻿# PHP
+config/database.php
+node_modules/
+vendor/

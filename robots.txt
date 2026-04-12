@@ -1,0 +1,22 @@
+# Vastu Samiksha - robots.txt
+User-agent: *
+Allow: /
+
+# Security & Privacy Restrictions
+Disallow: /config/
+Disallow: /api/
+Disallow: /includes/
+Disallow: /migrations/
+Disallow: /layouts/
+
+# Block known bad bots
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://samikshavastu.yuktaa.com/sitemap.xml
