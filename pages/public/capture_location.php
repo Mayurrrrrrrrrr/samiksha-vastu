@@ -2,8 +2,6 @@
 /**
  * Capture Location Public Page
  */
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../includes/functions.php';
 
 $token = $_GET['token'] ?? '';
 $submissionId = $_GET['submission_id'] ?? '';

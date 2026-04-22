@@ -4,7 +4,7 @@
  * Receives POST request with token, lat, lng, and optionally submission_id
  */
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../includes/auth.php';
 
 header('Content-Type: application/json');
 
