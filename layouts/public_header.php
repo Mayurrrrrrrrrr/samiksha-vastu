@@ -88,70 +88,42 @@ $langToggleUrl = BASE_URL . $currentRoute . '?' . http_build_query($_langParams)
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="<?= BASE_URL ?>" class="nav-brand">
-                <div class="nav-logo">वा</div>
-                <div class="nav-brand-text">
-                    <?= SITE_NAME ?>
-                    <small>
-                        <?= $lang === 'hi' ? 'वास्तु समीक्षा' : 'Vastu Samiksha' ?>
-                    </small>
-                </div>
+    <nav class="navbar" id="navbar" style="border-bottom: 1px solid var(--border-color); background: rgba(253, 248, 240, 0.95); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4) var(--space-6);">
+            <!-- Brand Logo -->
+            <a href="<?= BASE_URL ?>" class="nav-brand" style="display: flex; flex-direction: column; align-items: center; text-decoration: none;">
+                <div class="brand-devanagari" style="font-size: 28px; line-height: 1; color: var(--primary);">समिक्षा</div>
+                <div style="font-family: var(--font-body); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-top: 2px;">SAMIKSHA</div>
+                <div style="font-family: var(--font-body); font-size: 11px; letter-spacing: 1px; color: var(--accent); margin-top: 1px;">Vastu & Numerology</div>
             </a>
 
-            <div class="nav-menu" id="navMenu">
-                <a href="<?= BASE_URL ?>"
-                    class="nav-link <?= $currentRoute === 'home' || $currentRoute === '' ? 'active' : '' ?>">
-                    <?= t('nav_home') ?>
-                </a>
-                <a href="<?= BASE_URL ?>about" class="nav-link <?= $currentRoute === 'about' ? 'active' : '' ?>">
-                    <?= t('nav_about') ?>
-                </a>
-                <a href="<?= BASE_URL ?>services" class="nav-link <?= $currentRoute === 'services' ? 'active' : '' ?>">
-                    <?= t('nav_services') ?>
-                </a>
-                <a href="<?= BASE_URL ?>blogs" class="nav-link <?= $currentRoute === 'blogs' ? 'active' : '' ?>">
-                    <?= t('nav_blogs') ?>
-                </a>
-                <a href="<?= BASE_URL ?>videos" class="nav-link <?= $currentRoute === 'videos' ? 'active' : '' ?>">
-                    <?= t('nav_videos') ?>
-                </a>
-                <a href="<?= BASE_URL ?>ebooks" class="nav-link <?= $currentRoute === 'ebooks' ? 'active' : '' ?>">
-                    <?= t('nav_ebooks') ?>
-                </a>
-                <a href="<?= BASE_URL ?>games" class="nav-link <?= $currentRoute === 'games' ? 'active' : '' ?>">
-                    <?= t('nav_games') ?>
-                </a>
-                <a href="<?= BASE_URL ?>contact" class="nav-link <?= $currentRoute === 'contact' ? 'active' : '' ?>">
-                    <?= t('nav_contact') ?>
-                </a>
+            <!-- Desktop Nav Menu -->
+            <div class="nav-menu" id="navMenu" style="display: flex; gap: var(--space-6); align-items: center;">
+                <a href="<?= BASE_URL ?>" class="nav-link <?= $currentRoute === 'home' || $currentRoute === '' ? 'active' : '' ?>">Home</a>
+                <a href="<?= BASE_URL ?>journey" class="nav-link <?= $currentRoute === 'journey' ? 'active' : '' ?>">My Journey</a>
+                <a href="<?= BASE_URL ?>packages" class="nav-link <?= $currentRoute === 'packages' ? 'active' : '' ?>">Services</a>
+                <a href="<?= BASE_URL ?>game" class="nav-link <?= $currentRoute === 'game' ? 'active' : '' ?>">Vastu Quiz</a>
             </div>
 
-            <div class="nav-actions">
-                <a href="<?= $langToggleUrl ?>" class="nav-lang-toggle" title="Switch Language" style="display:flex; align-items:center; gap: 8px; font-weight:600; padding: 6px 12px; border-radius: 20px; background: var(--bg-section); color: var(--text-primary); border: 1px solid var(--border-color); text-decoration: none;">
-                    <span style="<?= $lang === 'en' ? 'color: var(--primary); font-weight:800;' : 'opacity:0.6;' ?>">EN</span>
-                    <div style="width: 24px; height: 14px; background: var(--border-color); border-radius: 10px; position: relative;">
-                        <div style="width: 10px; height: 10px; background: var(--primary); border-radius: 50%; position: absolute; top: 2px; <?= $lang === 'hi' ? 'right: 2px;' : 'left: 2px;' ?>"></div>
-                    </div>
-                    <span style="<?= $lang === 'hi' ? 'color: var(--primary); font-weight:800;' : 'opacity:0.6;' ?>">HI</span>
-                </a>
-                <button class="nav-theme-toggle" id="themeToggle" title="Toggle Dark Mode">🌙</button>
+            <!-- Nav Actions -->
+            <div class="nav-actions" style="display: flex; gap: var(--space-4); align-items: center;">
                 <?php if (isLoggedIn()): ?>
-                    <a href="<?= isConsultant() ? BASE_URL . 'consultant/dashboard' : BASE_URL . 'user/dashboard' ?>"
-                        class="btn btn-outline btn-sm">
-                        <?= t('nav_dashboard') ?>
+                    <a href="<?= isConsultant() ? BASE_URL . 'consultant/dashboard' : BASE_URL . 'user/dashboard' ?>" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-primary); font-weight: 500;">
+                        <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
+                            <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light);">
+                        <?php else: ?>
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                <?= mb_substr($_SESSION['user_name'] ?? 'U', 0, 1) ?>
+                            </div>
+                        <?php endif; ?>
+                        <span class="hide-mobile">Dashboard</span>
                     </a>
                 <?php else: ?>
-                    <a href="<?= BASE_URL ?>login" class="btn btn-outline btn-sm">
-                        <?= t('nav_login') ?>
-                    </a>
+                    <a href="<?= BASE_URL ?>login" class="btn btn-outline btn-sm" style="border-radius: var(--border-radius-full);">Client Login</a>
                 <?php endif; ?>
-                <a href="<?= BASE_URL ?>book-appointment" class="btn btn-primary btn-sm">
-                    <?= $lang === 'hi' ? 'अपॉइंटमेंट बुक करें' : 'Book Appointment' ?>
-                </a>
-                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" style="background: none; border: none; cursor: pointer; color: var(--primary);">
+                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
                 </button>
             </div>
         </div>

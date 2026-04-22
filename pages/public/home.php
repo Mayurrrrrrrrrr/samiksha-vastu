@@ -16,42 +16,44 @@ $testimonials = $db->query("SELECT * FROM testimonials WHERE is_active = 1 ORDER
 require __DIR__ . '/../../layouts/public_header.php';
 ?>
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-decoration hero-decoration-1"></div>
-    <div class="hero-decoration hero-decoration-2"></div>
-    <div class="hero-decoration hero-decoration-3"></div>
-
+<!-- Hero Section (Premium Indian Theme) -->
+<section class="hero-gradient" style="padding: var(--space-16) 0 var(--space-12) 0; position: relative;">
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="pulse-dot"></span>
-                <?= $lang === 'hi' ? '🙏 ऑनलाइन परामर्श उपलब्ध' : '🙏 Online Consultations Available' ?>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-12);">
+            
+            <!-- Hero Content -->
+            <div style="flex: 1; min-width: 300px; z-index: 10;">
+                <h1 style="font-size: var(--font-size-5xl); color: var(--primary); margin-bottom: var(--space-4); line-height: 1.1; font-family: var(--font-devanagari);">
+                    <?= $lang === 'hi' ? 'वास्तु और अंक ज्योतिष से बदलें जीवन' : 'Transform Your Life with Vastu & Numerology' ?>
+                </h1>
+                <p style="font-size: var(--font-size-xl); color: var(--text-secondary); margin-bottom: var(--space-8); max-width: 500px;">
+                    <?= $lang === 'hi' ? 'समिक्षा जी के 15 वर्षों के अनुभव के साथ अपने घर और जीवन में सकारात्मक ऊर्जा लाएं।' : 'Bring positive energy and harmony to your space and destiny with expert guidance from Samiksha ji.' ?>
+                </p>
+                <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                    <a href="<?= BASE_URL ?>book-appointment" class="btn btn-primary btn-lg">
+                        <?= $lang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation' ?>
+                    </a>
+                    <a href="<?= BASE_URL ?>contact" class="btn btn-outline btn-lg" style="border-radius: var(--border-radius-full); padding: var(--space-4) var(--space-8); border: 2px solid var(--primary); color: var(--primary); background: transparent; font-weight: 500;">
+                        <?= $lang === 'hi' ? 'हमसे बात करें' : 'Get in Touch' ?>
+                    </a>
+                </div>
             </div>
 
-            <h1>
-                <?= t('hero_title') ?>
-            </h1>
-            <p class="hero-text">
-                <?= t('hero_subtitle') ?>
-            </p>
-
-            <div class="hero-cta">
-                <a href="#contact-form" class="btn btn-primary btn-lg" style="background-color: var(--accent-green); border-color: var(--accent-green); box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);">
-                    <?= $lang === 'hi' ? 'मुफ़्त परामर्श बुक करें' : 'Book Free Consultation' ?> 📞
-                </a>
-                <a href="<?= BASE_URL ?>services" class="btn btn-outline-light btn-lg">
-                    <?= t('hero_cta') ?> →
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="hero-mandala" style="width:400px;height:400px;position:relative;">
-                <div class="hero-mandala-ring"></div>
-                <div class="hero-mandala-ring"></div>
-                <div class="hero-mandala-ring"></div>
-                <div class="hero-mandala-center">🏠</div>
+            <!-- Hero Visual -->
+            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative; z-index: 10;">
+                <div style="width: 400px; height: 500px; border-radius: 200px 200px 20px 20px; background: var(--bg-card); border: 12px solid var(--surface); box-shadow: 0 20px 40px rgba(194,91,26,0.15); position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
+                    <!-- Placeholder Photo Background Pattern -->
+                    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(135deg, var(--bg-section), rgba(212,160,23,0.1)); z-index: 1;"></div>
+                    <!-- Photo Silhouette -->
+                    <div style="width: 80%; height: 90%; background: var(--primary); opacity: 0.1; border-radius: 200px 200px 0 0; z-index: 2;"></div>
+                    <div style="position: absolute; bottom: 20px; z-index: 3; background: var(--surface); padding: 8px 16px; border-radius: 20px; box-shadow: var(--shadow-sm); font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+                        ✨ Samiksha Ji
+                    </div>
+                </div>
+                
+                <!-- Floating Decorative Elements -->
+                <div style="position: absolute; top: 50px; right: 0; font-size: 40px; animation: float 3s ease-in-out infinite; opacity: 0.5;">🪔</div>
+                <div style="position: absolute; bottom: 100px; left: -20px; font-size: 40px; animation: float 4s ease-in-out infinite reverse; opacity: 0.5;">🕉️</div>
             </div>
         </div>
     </div>
@@ -161,73 +163,73 @@ require __DIR__ . '/../../layouts/public_header.php';
     </div>
 </section>
 
-<!-- Services Section (Moved Down) -->
-<section class="section" id="services">
+<!-- About Teaser (Indian Brand Style) -->
+<section class="section">
+    <div class="container container-narrow text-center reveal">
+        <div style="font-size: 3rem; color: var(--primary); margin-bottom: var(--space-4);">ॐ</div>
+        <h2 style="font-family: var(--font-devanagari); color: var(--primary); font-size: 2.5rem; margin-bottom: var(--space-4);">
+            <?= $lang === 'hi' ? 'मेरी यात्रा' : 'My Journey' ?>
+        </h2>
+        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: var(--space-6); line-height: 1.8;">
+            <?= $lang === 'hi' ? 'नमस्ते! मैं समिक्षा हूँ। मेरा लक्ष्य प्राचीन वैदिक ज्ञान के माध्यम से आपके जीवन में संतुलन और सफलता लाना है।' : 'Namaste! I am Samiksha. My mission is to bring balance, prosperity, and success to your life through the ancient Vedic sciences of Vastu Shastra and Numerology.' ?>
+        </p>
+        <a href="<?= BASE_URL ?>journey" class="btn btn-outline" style="border-radius: var(--border-radius-full);">
+            <?= $lang === 'hi' ? 'मेरी कहानी पढ़ें' : 'Read My Story' ?>
+        </a>
+    </div>
+</section>
+
+<!-- Services Section (Premium Cards) -->
+<section class="section section-alt" id="services" style="background: var(--bg-section); padding: var(--space-16) 0;">
     <div class="container">
         <div class="section-header reveal">
-            <h2>
-                <?= t('section_services') ?>
+            <h2 style="font-family: var(--font-devanagari); font-size: 2.5rem; color: var(--primary);">
+                <?= $lang === 'hi' ? 'हमारी सेवाएँ' : 'Vedic Services' ?>
             </h2>
-            <p>
+            <p style="color: var(--text-secondary);">
                 <?= t('section_services_sub') ?>
             </p>
         </div>
 
         <div class="grid grid-3">
-            <div class="service-card reveal">
-                <div class="service-icon">🏠</div>
-                <h3>
+            <div class="card reveal" style="padding: var(--space-6); text-align: center; border-radius: 16px; border: 1px solid var(--border-color); background: var(--surface);">
+                <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏠</div>
+                <h3 style="color: var(--text-primary); font-family: var(--font-heading); margin-bottom: var(--space-2);">
                     <?= t('service_vastu_home') ?>
                 </h3>
-                <p>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: var(--space-4);">
                     <?= t('service_vastu_home_desc') ?>
                 </p>
+                <a href="<?= BASE_URL ?>packages" style="color: var(--primary); font-weight: 600; text-decoration: none;">View Packages →</a>
             </div>
-            <div class="service-card reveal">
-                <div class="service-icon">🏢</div>
-                <h3>
+            
+            <div class="card reveal" style="padding: var(--space-6); text-align: center; border-radius: 16px; border: 1px solid var(--border-color); background: var(--surface);">
+                <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏢</div>
+                <h3 style="color: var(--text-primary); font-family: var(--font-heading); margin-bottom: var(--space-2);">
                     <?= t('service_vastu_office') ?>
                 </h3>
-                <p>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: var(--space-4);">
                     <?= t('service_vastu_office_desc') ?>
                 </p>
+                <a href="<?= BASE_URL ?>packages" style="color: var(--primary); font-weight: 600; text-decoration: none;">View Packages →</a>
             </div>
-            <div class="service-card reveal">
-                <div class="service-icon">🔢</div>
-                <h3>
+            
+            <div class="card reveal" style="padding: var(--space-6); text-align: center; border-radius: 16px; border: 1px solid var(--border-color); background: var(--surface);">
+                <div style="font-size: 3rem; margin-bottom: var(--space-4);">🔢</div>
+                <h3 style="color: var(--text-primary); font-family: var(--font-heading); margin-bottom: var(--space-2);">
                     <?= t('service_numerology') ?>
                 </h3>
-                <p>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: var(--space-4);">
                     <?= t('service_numerology_desc') ?>
                 </p>
+                <a href="<?= BASE_URL ?>packages" style="color: var(--primary); font-weight: 600; text-decoration: none;">View Packages →</a>
             </div>
-            <div class="service-card reveal">
-                <div class="service-icon">🗺️</div>
-                <h3>
-                    <?= t('service_vastu_plot') ?>
-                </h3>
-                <p>
-                    <?= t('service_vastu_plot_desc') ?>
-                </p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon">✨</div>
-                <h3>
-                    <?= t('service_remedies') ?>
-                </h3>
-                <p>
-                    <?= t('service_remedies_desc') ?>
-                </p>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-icon">📝</div>
-                <h3>
-                    <?= t('service_name_correction') ?>
-                </h3>
-                <p>
-                    <?= t('service_name_correction_desc') ?>
-                </p>
-            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="<?= BASE_URL ?>packages" class="btn btn-primary btn-lg" style="box-shadow: var(--shadow-md);">
+                <?= $lang === 'hi' ? 'सभी सेवाएँ देखें' : 'View All Services' ?>
+            </a>
         </div>
     </div>
 </section>

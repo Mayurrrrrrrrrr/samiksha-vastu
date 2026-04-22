@@ -1,16 +1,13 @@
 </main>
 
 <!-- WhatsApp Float -->
-<div class="whatsapp-float" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-    <a href="<?= SOCIAL_WHATSAPP ?>" target="_blank" rel="noopener" title="Chat on WhatsApp" style="background-color: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.3s ease;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+<div class="whatsapp-float" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000; animation: pulse 2s infinite;">
+    <a href="https://wa.me/<?= str_replace(['+', ' ', '-'], '', SITE_PHONE) ?>?text=Namaste%20Samiksha%2C%20I%20would%20like%20to%20book%20a%20consultation" target="_blank" rel="noopener" title="Chat on WhatsApp" style="background-color: #25D366; color: white; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; transition: transform 0.3s ease;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
           <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.33 6.33 0 0 1-3.23-.881l-.231-.137-2.398.629.64-2.335-.151-.241a6.3 6.3 0 0 1-.967-3.342c.004-3.484 2.836-6.32 6.329-6.32a6.3 6.3 0 0 1 4.475 1.861 6.3 6.3 0 0 1 1.857 4.471c-.004 3.484-2.835 6.32-6.324 6.32zm3.473-4.743c-.191-.096-1.129-.557-1.304-.62-.174-.063-.301-.096-.428.096-.127.191-.493.62-.604.747-.111.127-.223.143-.414.048-.191-.096-.806-.297-1.536-.948-.57-.508-.955-1.135-1.066-1.326-.111-.191-.012-.294.084-.389.087-.087.191-.223.287-.334.096-.111.127-.191.191-.318.064-.127.032-.239-.016-.334-.048-.095-.428-1.034-.586-1.414-.154-.373-.312-.323-.428-.329-.111-.005-.239-.005-.366-.005s-.334.048-.509.239c-.175.191-.668.653-.668 1.591s.684 1.847.78 1.974c.096.127 1.346 2.053 3.261 2.879.456.196.812.313 1.089.401.458.146.875.125 1.203.076.368-.055 1.129-.461 1.287-.907.159-.446.159-.828.111-.907-.048-.079-.175-.127-.366-.223z"/>
         </svg>
     </a>
 </div>
-<style>
-.whatsapp-float:hover a { transform: scale(1.1); }
-</style>
 
 <!-- Native Chat Widget (visible on all public pages) -->
 <div class="chat-widget-float" id="chatWidgetContainer">
@@ -218,143 +215,56 @@
 <?php endif; ?>
 
 <!-- Footer -->
-<footer class="footer">
+<footer class="footer" style="background: var(--bg-body); border-top: 4px solid var(--primary); padding-top: var(--space-12);">
     <div class="container">
-        <div class="footer-grid">
-            <!-- About Column -->
-            <div class="footer-about">
-                <a href="<?= BASE_URL ?>" class="footer-brand">
-                    <div class="nav-logo">वा</div>
-                    <span class="footer-brand-text">
-                        <?= SITE_NAME ?>
-                    </span>
+        <div class="grid grid-3" style="gap: var(--space-8);">
+            <!-- Brand Column -->
+            <div>
+                <a href="<?= BASE_URL ?>" style="display: flex; flex-direction: column; text-decoration: none; margin-bottom: var(--space-4);">
+                    <div class="brand-devanagari" style="font-size: 32px; line-height: 1; color: var(--primary);">समिक्षा</div>
+                    <div style="font-family: var(--font-body); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-top: 2px;">SAMIKSHA</div>
                 </a>
-                <p>
-                    <?= t('footer_about') ?>
+                <p style="color: var(--text-secondary); font-style: italic; margin-bottom: var(--space-6);">
+                    "Bringing harmony to your home and destiny through the ancient science of Vastu & Numerology."
                 </p>
-                <div class="footer-social-links">
-                    <a href="<?= SOCIAL_FACEBOOK ?>" target="_blank" rel="noopener" title="Facebook">📘</a>
-                    <a href="<?= SOCIAL_INSTAGRAM ?>" target="_blank" rel="noopener" title="Instagram">📸</a>
-                    <a href="<?= SOCIAL_YOUTUBE ?>" target="_blank" rel="noopener" title="YouTube">🎬</a>
-                    <a href="<?= SOCIAL_TWITTER ?>" target="_blank" rel="noopener" title="Twitter">🐦</a>
-                    <a href="<?= SOCIAL_TELEGRAM ?>" target="_blank" rel="noopener" title="Telegram">✈️</a>
-                    <a href="whatsapp://send?text=<?= urlencode(SITE_NAME . ' - ' . BASE_URL) ?>" target="_blank" rel="noopener" title="Share on WhatsApp" style="margin-left:8px; border: 1px solid var(--border-color); padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">🔗 Share</a>
+                <div style="display: flex; gap: var(--space-3);">
+                    <a href="<?= SOCIAL_FACEBOOK ?>" target="_blank" rel="noopener" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px;">📘</a>
+                    <a href="<?= SOCIAL_INSTAGRAM ?>" target="_blank" rel="noopener" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px;">📸</a>
+                    <a href="<?= SOCIAL_YOUTUBE ?>" target="_blank" rel="noopener" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px;">🎬</a>
                 </div>
             </div>
 
             <!-- Quick Links -->
-            <div>
-                <h3>
-                    <?= t('footer_links') ?>
-                </h3>
-                <div class="footer-links">
-                    <a href="<?= BASE_URL ?>about">
-                        <?= t('nav_about') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>services">
-                        <?= t('nav_services') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>blogs">
-                        <?= t('nav_blogs') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>videos">
-                        <?= t('nav_videos') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>ebooks">
-                        <?= t('nav_ebooks') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>games">
-                        <?= t('nav_games') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>questions">
-                        <?= t('questions_title') ?>
-                    </a>
+            <div style="padding-left: var(--space-4);">
+                <h3 style="font-size: 1.2rem; margin-bottom: var(--space-4);">Quick Links</h3>
+                <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                    <a href="<?= BASE_URL ?>journey" style="color: var(--text-secondary); text-decoration: none;">My Journey</a>
+                    <a href="<?= BASE_URL ?>packages" style="color: var(--text-secondary); text-decoration: none;">Services & Packages</a>
+                    <a href="<?= BASE_URL ?>free-numerology" style="color: var(--text-secondary); text-decoration: none;">Free Numerology Calculator</a>
+                    <a href="<?= BASE_URL ?>game" style="color: var(--text-secondary); text-decoration: none;">Play Vastu Quiz</a>
+                    <a href="<?= BASE_URL ?>contact" style="color: var(--text-secondary); text-decoration: none;">Contact Us</a>
                 </div>
             </div>
 
-            <!-- Services Links -->
+            <!-- Contact Column -->
             <div>
-                <h3>
-                    <?= t('nav_services') ?>
-                </h3>
-                <div class="footer-links">
-                    <a href="<?= BASE_URL ?>services">
-                        <?= t('service_vastu_home') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>services">
-                        <?= t('service_vastu_office') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>services">
-                        <?= t('service_numerology') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>services">
-                        <?= t('service_remedies') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>services">
-                        <?= t('service_name_correction') ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>numerology-calculator">
-                        <?= t('numerology_calc') ?>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Contact & Newsletter -->
-            <div>
-                <h3>
-                    <?= t('footer_contact') ?>
-                </h3>
-                <div class="footer-contact-item">
-                    <div class="footer-contact-icon">📧</div>
-                    <div>
-                        <strong>Email</strong><br>
-                        <a href="mailto:<?= SITE_EMAIL ?>" style="color: rgba(255,255,255,0.6);">
-                            <?= SITE_EMAIL ?>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-contact-item">
-                    <div class="footer-contact-icon">📞</div>
-                    <div>
-                        <strong>
-                            <?= t('phone') ?>
-                        </strong><br>
-                        <a href="tel:<?= SITE_PHONE ?>" style="color: rgba(255,255,255,0.6);">
-                            <?= SITE_PHONE ?>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-contact-item">
-                    <div class="footer-contact-icon">📍</div>
-                    <div>
-                        <strong>
-                            <?= t('address') ?>
-                        </strong><br>
-                        <?= SITE_ADDRESS ?>
-                    </div>
-                </div>
-
-                <div class="footer-newsletter">
-                    <p style="margin-bottom: var(--space-3); font-size: var(--font-size-sm);">
-                        <?= t('footer_newsletter_sub') ?>
-                    </p>
-                    <form class="footer-newsletter-form" id="newsletterForm">
-                        <input type="email" placeholder="<?= t('footer_email_placeholder') ?>" required>
-                        <button type="submit">
-                            <?= t('footer_subscribe') ?>
-                        </button>
-                    </form>
+                <h3 style="font-size: 1.2rem; margin-bottom: var(--space-4);">Get in Touch</h3>
+                <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+                    Have a specific question about your floor plan or name correction? Reach out directly.
+                </p>
+                <a href="https://wa.me/<?= str_replace(['+', ' ', '-'], '', SITE_PHONE) ?>?text=Namaste%20Samiksha%2C%20I%20would%20like%20to%20book%20a%20consultation" class="btn btn-primary" style="background: var(--accent-green); width: 100%; display: flex; justify-content: center;">
+                    Chat on WhatsApp 💬
+                </a>
+                <div style="margin-top: var(--space-4); color: var(--text-secondary); font-size: 0.9rem;">
+                    <strong>Email:</strong> <?= SITE_EMAIL ?><br>
+                    <strong>Phone:</strong> <?= SITE_PHONE ?>
                 </div>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <span>
-                <?= t('footer_copyright') ?>
-            </span>
-            <span>Made with ❤️ by
-                <?= CONSULTANT_NAME ?>
-            </span>
+        <div style="border-top: 1px solid var(--border-color); margin-top: var(--space-12); padding: var(--space-6) 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); flex-wrap: wrap; gap: var(--space-4);">
+            <span>&copy; <?= date('Y') ?> Samiksha Vastu & Numerology. All rights reserved.</span>
+            <span>Built with ❤️ by <a href="https://yuktaa.com" target="_blank" style="color: var(--primary); font-weight: 600;">yuktaa.com</a></span>
         </div>
     </div>
 </footer>

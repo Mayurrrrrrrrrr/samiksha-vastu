@@ -98,6 +98,11 @@ $newContacts = $db->query("SELECT COUNT(*) FROM contact_messages WHERE is_read =
                         </span>
                     <?php endif; ?>
                 </a>
+                <a href="<?= BASE_URL ?>consultant/whatsapp"
+                    class="sidebar-link <?= $currentRoute === 'consultant/whatsapp' ? 'active' : '' ?>"><span
+                        class="link-icon">📱</span>
+                    <?= $lang === 'hi' ? 'व्हाट्सएप' : 'WhatsApp Panel' ?>
+                </a>
                 <a href="<?= BASE_URL ?>consultant/questions"
                     class="sidebar-link <?= $currentRoute === 'consultant/questions' ? 'active' : '' ?>"><span
                         class="link-icon">❓</span>

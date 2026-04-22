@@ -25,8 +25,9 @@ if (!str_starts_with($route, 'api/') && !str_starts_with($route, 'assets/')) {
 $routes = [
     // Public pages
     'home' => 'pages/public/home.php',
-    'about' => 'pages/public/about.php',
+    'journey' => 'pages/public/journey.php',
     'services' => 'pages/public/services.php',
+    'game' => 'pages/public/game.php',
     'blogs' => 'pages/public/blogs.php',
     'blog' => 'pages/public/blog_detail.php',
     'videos' => 'pages/public/videos.php',
@@ -64,6 +65,8 @@ $routes = [
     'consultant/submission' => 'pages/consultant/submission_detail.php',
     'consultant/questions' => 'pages/consultant/questions.php',
     'consultant/chat' => 'pages/consultant/chat.php',
+    'consultant/whatsapp' => 'pages/consultant/whatsapp.php',
+    'consultant/game_questions' => 'pages/consultant/game_questions.php',
     'consultant/contacts' => 'pages/consultant/contacts.php',
     'consultant/videos' => 'pages/consultant/videos.php',
     'consultant/ebooks' => 'pages/consultant/ebooks.php',

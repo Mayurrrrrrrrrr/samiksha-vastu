@@ -70,9 +70,13 @@ $pendingSubCount = $pendingSubs->fetchColumn();
     <div class="dashboard-layout">
         <aside class="sidebar">
             <div class="sidebar-brand">
-                <div class="avatar-placeholder">
-                    <?= mb_substr(currentUserName(), 0, 1) ?>
-                </div>
+                <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
+                    <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light);">
+                <?php else: ?>
+                    <div class="avatar-placeholder">
+                        <?= mb_substr(currentUserName(), 0, 1) ?>
+                    </div>
+                <?php endif; ?>
                 <div class="sidebar-brand-info">
                     <h4>
                         <?= clean(currentUserName()) ?>
