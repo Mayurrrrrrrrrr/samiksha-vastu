@@ -13,32 +13,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCSRF($_POST['csrf_token'] ?? 
             $floorPlan = $up['path'];
     }
 
-    $stmt = $db->prepare("INSERT INTO submissions (user_id, name, email, phone, dob, time_of_birth, gender, property_type, area_sqft, floors, year_built, facing_direction, entrance_direction, latitude, longitude, address, specific_concerns, floor_plan, additional_notes, numerology_request) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->execute([
-        currentUserId(),
-        $_POST['name'] ?? '',
-        $_POST['email'] ?? '',
-        $_POST['phone'] ?? '',
-        $_POST['dob'] ?? null,
-        $_POST['time_of_birth'] ?? null,
-        $_POST['gender'] ?? null,
-        $_POST['property_type'] ?? null,
-        $_POST['area_sqft'] ?? null,
-        $_POST['floors'] ?? null,
-        $_POST['year_built'] ?? null,
-        $_POST['facing_direction'] ?? null,
-        $_POST['entrance_direction'] ?? null,
-        $_POST['latitude'] ?? null,
-        $_POST['longitude'] ?? null,
-        $_POST['address'] ?? '',
-        $_POST['specific_concerns'] ?? '',
-        $floorPlan,
-        $_POST['additional_notes'] ?? '',
-        $_POST['numerology_request'] ?? ''
-    ]);
-    setFlash('success', $lang === 'hi' ? 'आवश्यकता सफलतापूर्वक जमा!' : 'Requirement submitted successfully!');
-    header('Location: ' . BASE_URL . 'user/submissions');
-    exit;
+    try {
+        $stmt = $db->prepare("INSERT INTO submissions (user_id, name, email, phone, dob, time_of_birth, gender, property_type, area_sqft, floors, year_built, facing_direction, entrance_direction, latitude, longitude, address, specific_concerns, floor_plan, additional_notes, numerology_request) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->execute([
+            currentUserId(),
+            $_POST['name'] ?? '',
+            $_POST['email'] ?? '',
+            $_POST['phone'] ?? '',
+            (isset($_POST['dob']) && $_POST['dob'] !== '') ? $_POST['dob'] : null,
+            (isset($_POST['time_of_birth']) && $_POST['time_of_birth'] !== '') ? $_POST['time_of_birth'] : null,
+            (isset($_POST['gender']) && $_POST['gender'] !== '') ? $_POST['gender'] : null,
+            (isset($_POST['property_type']) && $_POST['property_type'] !== '') ? $_POST['property_type'] : null,
+            (isset($_POST['area_sqft']) && $_POST['area_sqft'] !== '') ? $_POST['area_sqft'] : null,
+            (isset($_POST['floors']) && $_POST['floors'] !== '') ? $_POST['floors'] : null,
+            (isset($_POST['year_built']) && $_POST['year_built'] !== '') ? $_POST['year_built'] : null,
+            (isset($_POST['facing_direction']) && $_POST['facing_direction'] !== '') ? $_POST['facing_direction'] : null,
+            (isset($_POST['entrance_direction']) && $_POST['entrance_direction'] !== '') ? $_POST['entrance_direction'] : null,
+            (isset($_POST['latitude']) && $_POST['latitude'] !== '') ? $_POST['latitude'] : null,
+            (isset($_POST['longitude']) && $_POST['longitude'] !== '') ? $_POST['longitude'] : null,
+            $_POST['address'] ?? '',
+            $_POST['specific_concerns'] ?? '',
+            $floorPlan,
+            $_POST['additional_notes'] ?? '',
+            $_POST['numerology_request'] ?? ''
+        ]);
+        setFlash('success', $lang === 'hi' ? 'आवश्यकता सफलतापूर्वक जमा!' : 'Requirement submitted successfully!');
+        header('Location: ' . BASE_URL . 'user/submissions');
+        exit;
+    } catch (PDOException $e) {
+        die("Database Error in Submission: " . $e->getMessage() . " <br><br>Please take a screenshot and contact support.");
+    } catch (Exception $e) {
+        die("General Error in Submission: " . $e->getMessage() . " <br><br>Please take a screenshot and contact support.");
+    }
 }
 
 $user = currentUser();
@@ -185,10 +191,10 @@ require __DIR__ . '/../../layouts/user_header.php';
             <div class="grid grid-3">
                 <div class="form-group"><label class="form-label">
                         <?= t('latitude') ?>
-                    </label><input type="text" name="latitude" id="lat" class="form-control" readonly></div>
+                    </label><input type="text" name="latitude" id="lat" class="form-control" placeholder="e.g. 20.593684"></div>
                 <div class="form-group"><label class="form-label">
                         <?= t('longitude') ?>
-                    </label><input type="text" name="longitude" id="lng" class="form-control" readonly></div>
+                    </label><input type="text" name="longitude" id="lng" class="form-control" placeholder="e.g. 78.962880"></div>
                 <div class="form-group"><label class="form-label">
                         <?= t('address') ?>
                     </label><input type="text" name="address" id="address" class="form-control"></div>

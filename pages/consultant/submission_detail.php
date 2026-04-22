@@ -3,7 +3,7 @@
 $pageTitle = $lang === 'hi' ? 'आवश्यकता विवरण' : 'Submission Detail';
 $db = getDB();
 $subId = intval($_GET['id'] ?? 0);
-$sub = $db->prepare("SELECT s.*, u.name as user_name, u.email as user_email, u.phone as user_phone, u.dob as user_dob FROM submissions s JOIN users u ON s.user_id = u.id WHERE s.id = ?");
+$sub = $db->prepare("SELECT s.*, u.name as user_name, u.email as user_email, u.phone as user_phone, u.dob as user_dob, u.location_token FROM submissions s JOIN users u ON s.user_id = u.id WHERE s.id = ?");
 $sub->execute([$subId]);
 $sub = $sub->fetch();
 if (!$sub) {
@@ -83,9 +83,18 @@ require __DIR__ . '/../../layouts/consultant_header.php';
             </div>
         </div>
         <div class="card" style="padding:var(--space-6);margin-bottom:var(--space-4);">
-            <h3 class="mb-4">🏠
-                <?= $lang === 'hi' ? 'संपत्ति जानकारी' : 'Property Info' ?>
-            </h3>
+            <div class="flex-between mb-4">
+                <h3 style="margin:0;">🏠 <?= $lang === 'hi' ? 'संपत्ति जानकारी' : 'Property Info' ?></h3>
+                <?php if (!empty($sub['location_token'])): ?>
+                    <?php 
+                        $phoneNum = preg_replace('/[^0-9]/', '', $sub['user_phone'] ?: $sub['phone'] ?? '');
+                        $waUrl = "https://wa.me/" . $phoneNum . "?text=" . urlencode("Hello, please share the exact location of the property for Vastu analysis by clicking this link: " . BASE_URL . "capture_location?token=" . $sub['location_token'] . "&submission_id=" . $sub['id']); 
+                    ?>
+                    <?php if($phoneNum): ?>
+                        <a href="<?= $waUrl ?>" target="_blank" class="btn btn-sm btn-outline" style="color:#25D366;border-color:#25D366;text-decoration:none;" title="Request Location on WhatsApp">📍 Request Location Link</a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
             <div style="display:grid;gap:var(--space-2);">
                 <div class="flex-between"><span class="text-muted">
                         <?= t('property_type') ?>

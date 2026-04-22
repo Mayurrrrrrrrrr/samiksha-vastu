@@ -18,6 +18,10 @@ $recentSubs = $db->prepare("SELECT * FROM submissions WHERE user_id = ? ORDER BY
 $recentSubs->execute([$uid]);
 $recentSubs = $recentSubs->fetchAll();
 
+$userStmt = $db->prepare("SELECT latitude, longitude, location_token FROM users WHERE id = ?");
+$userStmt->execute([$uid]);
+$currentUserInfo = $userStmt->fetch();
+
 require __DIR__ . '/../../layouts/user_header.php';
 ?>
 <div class="dash-header">
@@ -78,7 +82,7 @@ require __DIR__ . '/../../layouts/user_header.php';
 </div>
 
 <!-- Quick Actions -->
-<div class="grid grid-3" style="margin-bottom:var(--space-8);">
+<div class="grid grid-4" style="margin-bottom:var(--space-8);">
     <a href="<?= BASE_URL ?>user/submit" class="card"
         style="padding:var(--space-6);text-align:center;text-decoration:none;color:var(--text-primary);">
         <div style="font-size:2rem;margin-bottom:var(--space-2);">📋</div>
@@ -109,7 +113,33 @@ require __DIR__ . '/../../layouts/user_header.php';
             <?= $lang === 'hi' ? 'प्रश्न पूछें' : 'Ask a question' ?>
         </p>
     </a>
+    <a href="<?= BASE_URL ?>capture_location<?= !empty($currentUserInfo['location_token']) ? '?token='.$currentUserInfo['location_token'] : '' ?>" target="_blank" class="card"
+        style="padding:var(--space-6);text-align:center;text-decoration:none;color:var(--text-primary); border: 2px dashed var(--primary);">
+        <div style="font-size:2rem;margin-bottom:var(--space-2);">📍</div>
+        <h4>
+            <?= $lang === 'hi' ? 'स्थान अपडेट करें' : 'Update Location' ?>
+        </h4>
+        <p class="text-sm text-muted">
+            <?= $lang === 'hi' ? 'अपना वर्तमान स्थान साझा करें' : 'Share your current location' ?>
+        </p>
+    </a>
 </div>
+
+<?php if(!empty($currentUserInfo['latitude']) && !empty($currentUserInfo['longitude'])): ?>
+<div class="card" style="margin-bottom:var(--space-8); padding: var(--space-4) var(--space-6); border-left: 4px solid var(--accent-green); background-color: rgba(39, 174, 96, 0.05);">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h4 style="margin:0 0 5px 0;">📍 <?= $lang === 'hi' ? 'आपका सहेजा गया स्थान' : 'Your Saved Location' ?></h4>
+            <p style="margin:0; font-size:0.9em; color:var(--text-muted);">
+                <?= $currentUserInfo['latitude'] ?>, <?= $currentUserInfo['longitude'] ?>
+            </p>
+        </div>
+        <a href="https://maps.google.com/?q=<?= $currentUserInfo['latitude'] ?>,<?= $currentUserInfo['longitude'] ?>" target="_blank" class="btn btn-sm" style="background:#e8f4f8;color:#3498db;padding:6px 12px;font-size:13px;text-decoration:none;">
+            <?= $lang === 'hi' ? 'नक्शे पर देखें' : 'View on Map' ?>
+        </a>
+    </div>
+</div>
+<?php endif; ?>
 
 <!-- Recent Submissions -->
 <div class="card" style="overflow:hidden;">

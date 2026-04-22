@@ -42,6 +42,8 @@ $routes = [
     'questions' => 'pages/public/questions.php',
     'book-appointment' => 'pages/public/book_appointment.php',
     'intake-form' => 'pages/user/intake_form.php',
+    'capture_location' => 'pages/public/capture_location.php',
+    'public/capture_location.php' => 'pages/public/capture_location.php',
 
     // User pages
     'user/dashboard' => 'pages/user/dashboard.php',
