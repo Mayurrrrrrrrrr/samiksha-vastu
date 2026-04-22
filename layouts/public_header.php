@@ -33,6 +33,7 @@ $langToggleUrl = BASE_URL . $currentRoute . '?' . http_build_query($_langParams)
     <meta property="og:site_name" content="<?= SITE_NAME ?>">
     <meta property="og:locale" content="<?= $lang === 'hi' ? 'hi_IN' : 'en_IN' ?>">
     <meta property="og:image" content="<?= ASSETS_URL ?>images/og-image.jpg">
+    <meta property="og:url" content="<?= BASE_URL . $currentRoute ?>">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -78,7 +79,9 @@ $langToggleUrl = BASE_URL . $currentRoute . '?' . http_build_query($_langParams)
         },
         "url": "<?= rtrim(BASE_URL, '/') ?>",
         "telephone": "<?= SITE_PHONE ?>",
-        "email": "<?= SITE_EMAIL ?>"
+        "email": "<?= SITE_EMAIL ?>",
+        "priceRange": "₹1500 - ₹5100",
+        "areaServed": "Global (Online) & India"
     }
     </script>
 </head>

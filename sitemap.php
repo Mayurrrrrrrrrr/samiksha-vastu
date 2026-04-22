@@ -90,6 +90,20 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     </url>
     <url>
         <loc>
+            <?= $baseUrl ?>/free-numerology
+        </loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>
+            <?= $baseUrl ?>/packages
+        </loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>
             <?= $baseUrl ?>/questions
         </loc>
         <changefreq>daily</changefreq>
