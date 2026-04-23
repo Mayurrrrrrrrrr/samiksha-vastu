@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__ . '/includes/auth.php';
 
+echo "<h1>Session Info</h1>";
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
 $db = getDB();
 
 try {
