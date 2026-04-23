@@ -79,6 +79,9 @@ $routes = [
     'api/quiz' => 'api/quiz.php',
     'api/submission' => 'api/submission.php',
     'api/newsletter' => 'api/newsletter.php',
+    'debug_oauth' => 'debug_oauth.php',
+    'setup_admin' => 'setup_admin.php',
+    'check_db' => 'check_db.php',
 ];
 
 // Handle blog detail with slug
