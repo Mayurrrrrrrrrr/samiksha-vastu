@@ -82,6 +82,7 @@ $_SESSION['user_name'] = $name;
 $_SESSION['user_email'] = $email;
 $_SESSION['user_role'] = $role;
 $_SESSION['user_avatar'] = $avatar;
+$_SESSION['logged_in'] = true;
 
 // Redirect based on role logic
 if ($role === 'consultant') {

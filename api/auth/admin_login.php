@@ -30,6 +30,7 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_name'] = $user['name'];
     $_SESSION['user_email'] = $email;
     $_SESSION['user_role'] = 'consultant';
+    $_SESSION['logged_in'] = true;
     
     // Update last login
     $db->prepare("UPDATE users SET last_login = NOW() WHERE id = ?")->execute([$user['id']]);
