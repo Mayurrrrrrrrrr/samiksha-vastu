@@ -24,7 +24,7 @@ $user = $stmt->fetch();
 
 if ($user && password_verify($password, $user['password'])) {
     // Session Regeneration for security
-    session_regenerate_id(true);
+    // session_regenerate_id(true); // Temporarily disabled to debug session loss
     
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['user_name'] = $user['name'];
@@ -35,8 +35,10 @@ if ($user && password_verify($password, $user['password'])) {
     $db->prepare("UPDATE users SET last_login = NOW() WHERE id = ?")->execute([$user['id']]);
     
     header('Location: ' . BASE_URL . 'consultant/dashboard');
+    session_write_close();
 } else {
     setFlash('error', 'Invalid Admin Credentials');
     header('Location: ' . BASE_URL . 'login');
+    session_write_close();
 }
 exit;

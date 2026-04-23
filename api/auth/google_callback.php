@@ -75,7 +75,7 @@ if ($user) {
 }
 
 // 4. Session Setup
-session_regenerate_id(true);
+// session_regenerate_id(true); // Temporarily disabled to debug session loss
 
 $_SESSION['user_id'] = $user_id;
 $_SESSION['user_name'] = $name;
@@ -89,4 +89,5 @@ if ($role === 'consultant') {
 } else {
     header('Location: ' . BASE_URL . 'user/dashboard');
 }
+session_write_close(); // Ensure session is saved before redirect
 exit;
