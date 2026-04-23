@@ -5,7 +5,11 @@
 require_once __DIR__ . '/../../includes/auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    die('Invalid Request Method');
+    die('Invalid Request Method: ' . $_SERVER['REQUEST_METHOD']);
+}
+
+if (empty($_POST)) {
+    die('Error: POST data is empty. Your server might be stripping request bodies.');
 }
 
 $email = $_POST['email'] ?? '';
