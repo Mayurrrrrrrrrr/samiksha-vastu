@@ -62,13 +62,13 @@ $user = $stmt->fetch();
 
 if ($user) {
     // Update existing
-    $stmt = $db->prepare("UPDATE users SET google_id = ?, name = ?, avatar_url = ?, last_login = NOW() WHERE id = ?");
+    $stmt = $db->prepare("UPDATE users SET google_id = ?, name = ?, avatar = ?, last_login = NOW() WHERE id = ?");
     $stmt->execute([$google_id, $name, $avatar, $user['id']]);
     $user_id = $user['id'];
     $role = $user['role'];
 } else {
     // Insert new (random secure password since they use OAuth)
-    $stmt = $db->prepare("INSERT INTO users (google_id, name, email, avatar_url, role, password, created_at, last_login) VALUES (?, ?, ?, ?, 'user', 'oauth_placeholder', NOW(), NOW())");
+    $stmt = $db->prepare("INSERT INTO users (google_id, name, email, avatar, role, password, created_at, last_login) VALUES (?, ?, ?, ?, 'user', 'oauth_placeholder', NOW(), NOW())");
     $stmt->execute([$google_id, $name, $email, $avatar]);
     $user_id = $db->lastInsertId();
     $role = 'user';
