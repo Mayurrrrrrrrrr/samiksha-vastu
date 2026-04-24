@@ -215,56 +215,47 @@
 <?php endif; ?>
 
 <!-- Footer -->
-<footer class="footer" style="background: var(--bg-body); border-top: 4px solid var(--primary); padding-top: var(--space-12);">
+<footer class="footer" style="background: var(--bg-body); border-top: 1px solid var(--border-color); padding-top: var(--space-12); padding-bottom: var(--space-8);">
     <div class="container">
-        <div class="grid grid-3" style="gap: var(--space-8);">
+        <div class="grid grid-3" style="gap: var(--space-12);">
             <!-- Brand Column -->
             <div>
-                <a href="<?= BASE_URL ?>" style="display: flex; flex-direction: column; text-decoration: none; margin-bottom: var(--space-4);">
-                    <div class="brand-devanagari" style="font-size: 32px; line-height: 1; color: var(--primary);">समिक्षा</div>
-                    <div style="font-family: var(--font-body); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-top: 2px;">SAMIKSHA</div>
+                <a href="<?= BASE_URL ?>" style="display: flex; gap: 10px; align-items: center; text-decoration: none; margin-bottom: var(--space-4);">
+                    <div class="brand-devanagari" style="font-size: 24px; color: var(--primary);">वा</div>
+                    <div style="font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary);">SAMIKSHA</div>
                 </a>
-                <p style="color: var(--text-secondary); font-style: italic; margin-bottom: var(--space-6);">
-                    "Bringing harmony to your home and destiny through the ancient science of Vastu & Numerology."
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: var(--space-4);">
+                    Bringing harmony to your home and destiny through the ancient science of Vastu & Numerology.
                 </p>
-                <div style="display: flex; gap: var(--space-3);">
-                    <a href="<?= SOCIAL_FACEBOOK ?>" target="_blank" rel="noopener" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px;">📘</a>
-                    <a href="<?= SOCIAL_INSTAGRAM ?>" target="_blank" rel="noopener" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px;">📸</a>
-                    <a href="<?= SOCIAL_YOUTUBE ?>" target="_blank" rel="noopener" style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px;">🎬</a>
-                </div>
             </div>
 
             <!-- Quick Links -->
-            <div style="padding-left: var(--space-4);">
-                <h3 style="font-size: 1.2rem; margin-bottom: var(--space-4);">Quick Links</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
                 <div style="display: flex; flex-direction: column; gap: var(--space-2);">
-                    <a href="<?= BASE_URL ?>journey" style="color: var(--text-secondary); text-decoration: none;">My Journey</a>
-                    <a href="<?= BASE_URL ?>packages" style="color: var(--text-secondary); text-decoration: none;">Services & Packages</a>
-                    <a href="<?= BASE_URL ?>free-numerology" style="color: var(--text-secondary); text-decoration: none;">Free Numerology Calculator</a>
-                    <a href="<?= BASE_URL ?>game" style="color: var(--text-secondary); text-decoration: none;">Play Vastu Quiz</a>
-                    <a href="<?= BASE_URL ?>contact" style="color: var(--text-secondary); text-decoration: none;">Contact Us</a>
+                    <a href="<?= BASE_URL ?>journey" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Journey</a>
+                    <a href="<?= BASE_URL ?>packages" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Services</a>
+                    <a href="<?= BASE_URL ?>contact" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Contact</a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                    <a href="<?= BASE_URL ?>blogs" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Knowledge</a>
+                    <a href="<?= BASE_URL ?>quiz" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Vastu Quiz</a>
+                    <a href="<?= BASE_URL ?>numerology-calculator" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Calculator</a>
                 </div>
             </div>
 
             <!-- Contact Column -->
-            <div>
-                <h3 style="font-size: 1.2rem; margin-bottom: var(--space-4);">Get in Touch</h3>
-                <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
-                    Have a specific question about your floor plan or name correction? Reach out directly.
-                </p>
-                <a href="https://wa.me/<?= str_replace(['+', ' ', '-'], '', SITE_PHONE) ?>?text=Namaste%20Samiksha%2C%20I%20would%20like%20to%20book%20a%20consultation" class="btn btn-primary" style="background: var(--accent-green); width: 100%; display: flex; justify-content: center;">
-                    Chat on WhatsApp 💬
-                </a>
-                <div style="margin-top: var(--space-4); color: var(--text-secondary); font-size: 0.9rem;">
-                    <strong>Email:</strong> <?= SITE_EMAIL ?><br>
-                    <strong>Phone:</strong> <?= SITE_PHONE ?>
+            <div style="text-align: right;">
+                <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-2); color: var(--text-primary);">Get in Touch</h3>
+                <div style="color: var(--text-muted); font-size: 0.85rem;">
+                    <?= SITE_EMAIL ?><br>
+                    <?= SITE_PHONE ?>
                 </div>
             </div>
         </div>
 
-        <div style="border-top: 1px solid var(--border-color); margin-top: var(--space-12); padding: var(--space-6) 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); flex-wrap: wrap; gap: var(--space-4);">
-            <span>&copy; <?= date('Y') ?> Samiksha Vastu & Numerology. All rights reserved.</span>
-            <span>Built with ❤️ by <a href="https://yuktaa.com" target="_blank" style="color: var(--primary); font-weight: 600;">yuktaa.com</a></span>
+        <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid rgba(197, 160, 89, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.5px;">
+            <span>&copy; <?= date('Y') ?> SAMIKSHA VASTU. All rights reserved.</span>
+            <span>Handcrafted by <a href="https://yuktaa.com" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">YUKTAA</a></span>
         </div>
     </div>
 </footer>

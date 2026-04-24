@@ -1,51 +1,48 @@
-/* ====================================
-   SAMIKSHA VASTU - Indian Brand Design System
-   ==================================== */
-
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 
 /* CSS Variables */
 :root {
-    /* Primary Colors - Saffron/Gold Indian Theme */
-    --primary: #C25B1A;
-    --primary-dark: #9C4510;
-    --primary-light: #E0712E;
-    --primary-glow: rgba(194, 91, 26, 0.3);
+    /* Temple Modern Palette */
+    --primary: #B03A2E; /* Terracotta Red */
+    --primary-dark: #7B241C;
+    --primary-light: #E6B0AA;
+    --primary-glow: rgba(176, 58, 46, 0.2);
 
-    /* Secondary / Accents */
-    --accent: #D4A017;
-    --accent-gold: #f1c40f;
-    --accent-green: #25D366;
+    --accent: #C5A059; /* Antique Gold */
+    --accent-dark: #9A7D46;
+    --accent-light: #F4D03F;
+
+    --saffron: #E67E22; /* Deep Saffron */
 
     /* Backgrounds */
-    --bg-body: #FDF8F0;
+    --bg-body: #FDFAF5; /* Temple White / Ivory */
     --bg-card: #FFFFFF;
-    --bg-card-hover: #FFF1E1;
-    --bg-section: #F8EFE3;
+    --bg-card-hover: #FFF9F3;
+    --bg-section: #F9F4EB;
     --surface: #FFFFFF;
 
     /* Text */
-    --text-primary: #1C1209;
-    --text-secondary: #5C4A36;
-    --text-muted: #8B7A6A;
+    --text-primary: #1F1F1F;
+    --text-secondary: #4A4A4A;
+    --text-muted: #7A7A7A;
     --text-light: #FFFFFF;
 
     /* Borders */
-    --border-color: rgba(194, 91, 26, 0.15);
-    --border-radius: 12px;
-    --border-radius-sm: 8px;
-    --border-radius-lg: 20px;
+    --border-color: rgba(197, 160, 89, 0.2);
+    --border-radius: 8px; /* More sophisticated, less bubbly */
+    --border-radius-sm: 4px;
+    --border-radius-lg: 0px; /* Sharp modern edges for some elements */
     --border-radius-full: 9999px;
 
     /* Shadows */
-    --shadow-sm: 0 1px 3px rgba(194, 91, 26, 0.05);
-    --shadow-md: 0 4px 12px rgba(194, 91, 26, 0.1);
-    --shadow-lg: 0 10px 30px rgba(194, 91, 26, 0.12);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 20px rgba(183, 149, 11, 0.08);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
 
     /* Typography */
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Poppins', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Outfit', sans-serif;
     --font-devanagari: 'Tiro Devanagari Hindi', serif;
 
     --font-size-xs: 0.75rem;
@@ -244,8 +241,114 @@ img { max-width: 100%; height: auto; display: block; }
     z-index: 0;
 }
 
-@media (max-width: 768px) {
-    .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-    h1 { font-size: 2rem; }
-    .btn-lg { padding: var(--space-3) var(--space-6); }
+/* ====================================
+   VASTU MANDALA SYSTEM
+   ==================================== */
+
+.mandala-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-20) var(--space-6);
+    background: radial-gradient(circle at center, #FFFFFF 0%, var(--bg-body) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.mandala-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--space-2);
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: var(--bg-body);
+}
+
+.mandala-cell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-4);
+    background: var(--bg-card);
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid rgba(197, 160, 89, 0.1);
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.mandala-cell:hover {
+    background: var(--bg-card-hover);
+    z-index: 2;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+}
+
+.mandala-cell .direction-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+}
+
+.mandala-cell .cell-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+}
+
+.mandala-cell .cell-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+    transition: transform 0.3s ease;
+}
+
+.mandala-cell:hover .cell-icon {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* Brahma Sthan (Center) */
+.mandala-cell.center-cell {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    z-index: 3;
+}
+
+.mandala-cell.center-cell .cell-title {
+    color: var(--primary);
+    font-family: var(--font-devanagari);
+    font-size: 2rem;
+}
+
+/* Direction Mapping Labels */
+.mandala-cell[data-dir="N"] { border-top: 3px solid var(--accent); }
+.mandala-cell[data-dir="NE"] { border-top: 3px solid var(--primary); border-right: 3px solid var(--primary); }
+.mandala-cell[data-dir="E"] { border-right: 3px solid var(--accent); }
+.mandala-cell[data-dir="SE"] { border-bottom: 3px solid var(--primary); border-right: 3px solid var(--primary); }
+.mandala-cell[data-dir="S"] { border-bottom: 3px solid var(--accent); }
+.mandala-cell[data-dir="SW"] { border-bottom: 3px solid var(--primary); border-left: 3px solid var(--primary); }
+.mandala-cell[data-dir="W"] { border-left: 3px solid var(--accent); }
+.mandala-cell[data-dir="NW"] { border-top: 3px solid var(--primary); border-left: 3px solid var(--primary); }
+
+@media (max-width: 600px) {
+    .mandala-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+    }
+    .mandala-cell .direction-label { font-size: 0.5rem; letter-spacing: 1px; }
+    .mandala-cell .cell-title { font-size: 0.8rem; }
+    .mandala-cell .cell-icon { font-size: 1.2rem; }
 }

@@ -91,18 +91,19 @@ $langToggleUrl = BASE_URL . $currentRoute . '?' . http_build_query($_langParams)
     <nav class="navbar" id="navbar" style="border-bottom: 1px solid var(--border-color); background: rgba(253, 248, 240, 0.95); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000;">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4) var(--space-6);">
             <!-- Brand Logo -->
-            <a href="<?= BASE_URL ?>" class="nav-brand" style="display: flex; flex-direction: column; align-items: center; text-decoration: none;">
-                <div class="brand-devanagari" style="font-size: 28px; line-height: 1; color: var(--primary);">समिक्षा</div>
-                <div style="font-family: var(--font-body); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-top: 2px;">SAMIKSHA</div>
-                <div style="font-family: var(--font-body); font-size: 11px; letter-spacing: 1px; color: var(--accent); margin-top: 1px;">Vastu & Numerology</div>
+            <a href="<?= BASE_URL ?>" class="nav-brand" style="display: flex; gap: 15px; align-items: center; text-decoration: none;">
+                <div class="brand-devanagari" style="font-size: 32px; line-height: 1; color: var(--primary);">वा</div>
+                <div style="border-left: 1px solid var(--border-color); padding-left: 15px;">
+                    <div style="font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary);">SAMIKSHA</div>
+                    <div style="font-family: var(--font-body); font-size: 10px; letter-spacing: 1px; color: var(--accent); white-space: nowrap;">Vastu & Numerology</div>
+                </div>
             </a>
 
             <!-- Desktop Nav Menu -->
-            <div class="nav-menu" id="navMenu" style="display: flex; gap: var(--space-6); align-items: center;">
-                <a href="<?= BASE_URL ?>" class="nav-link <?= $currentRoute === 'home' || $currentRoute === '' ? 'active' : '' ?>">Home</a>
-                <a href="<?= BASE_URL ?>journey" class="nav-link <?= $currentRoute === 'journey' ? 'active' : '' ?>">My Journey</a>
-                <a href="<?= BASE_URL ?>packages" class="nav-link <?= $currentRoute === 'packages' ? 'active' : '' ?>">Services</a>
-                <a href="<?= BASE_URL ?>game" class="nav-link <?= $currentRoute === 'game' ? 'active' : '' ?>">Vastu Quiz</a>
+            <div class="nav-menu" id="navMenu" style="display: flex; gap: var(--space-8); align-items: center;">
+                <a href="<?= BASE_URL ?>journey" class="nav-link <?= $currentRoute === 'journey' ? 'active' : '' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Journey</a>
+                <a href="<?= BASE_URL ?>packages" class="nav-link <?= $currentRoute === 'packages' ? 'active' : '' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Services</a>
+                <a href="<?= BASE_URL ?>game" class="nav-link <?= $currentRoute === 'game' ? 'active' : '' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Quiz</a>
             </div>
 
             <!-- Nav Actions -->

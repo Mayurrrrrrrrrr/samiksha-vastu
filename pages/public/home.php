@@ -16,72 +16,86 @@ $testimonials = $db->query("SELECT * FROM testimonials WHERE is_active = 1 ORDER
 require __DIR__ . '/../../layouts/public_header.php';
 ?>
 
-<!-- Hero Section (Premium Indian Theme) -->
-<section class="hero-gradient" style="padding: var(--space-16) 0 var(--space-12) 0; position: relative;">
-    <div class="container">
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-12);">
-            
-            <!-- Hero Content -->
-            <div style="flex: 1; min-width: 300px; z-index: 10;">
-                <h1 style="font-size: var(--font-size-5xl); color: var(--primary); margin-bottom: var(--space-4); line-height: 1.1; font-family: var(--font-devanagari);">
-                    <?= $lang === 'hi' ? 'वास्तु और अंक ज्योतिष से बदलें जीवन' : 'Transform Your Life with Vastu & Numerology' ?>
-                </h1>
-                <p style="font-size: var(--font-size-xl); color: var(--text-secondary); margin-bottom: var(--space-8); max-width: 500px;">
-                    <?= $lang === 'hi' ? 'समिक्षा जी के 15 वर्षों के अनुभव के साथ अपने घर और जीवन में सकारात्मक ऊर्जा लाएं।' : 'Bring positive energy and harmony to your space and destiny with expert guidance from Samiksha ji.' ?>
-                </p>
-                <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
-                    <a href="<?= BASE_URL ?>book-appointment" class="btn btn-primary btn-lg">
-                        <?= $lang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation' ?>
-                    </a>
-                    <a href="<?= BASE_URL ?>contact" class="btn btn-outline btn-lg" style="border-radius: var(--border-radius-full); padding: var(--space-4) var(--space-8); border: 2px solid var(--primary); color: var(--primary); background: transparent; font-weight: 500;">
-                        <?= $lang === 'hi' ? 'हमसे बात करें' : 'Get in Touch' ?>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hero Visual -->
-            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative; z-index: 10;">
-                <div style="width: 400px; height: 500px; border-radius: 200px 200px 20px 20px; background: var(--bg-card); border: 12px solid var(--surface); box-shadow: 0 20px 40px rgba(194,91,26,0.15); position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
-                    <!-- Placeholder Photo Background Pattern -->
-                    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(135deg, var(--bg-section), rgba(212,160,23,0.1)); z-index: 1;"></div>
-                    <!-- Photo Silhouette -->
-                    <div style="width: 80%; height: 90%; background: var(--primary); opacity: 0.1; border-radius: 200px 200px 0 0; z-index: 2;"></div>
-                    <div style="position: absolute; bottom: 20px; z-index: 3; background: var(--surface); padding: 8px 16px; border-radius: 20px; box-shadow: var(--shadow-sm); font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
-                        ✨ Samiksha Ji
-                    </div>
-                </div>
-                
-                <!-- Floating Decorative Elements -->
-                <div style="position: absolute; top: 50px; right: 0; font-size: 40px; animation: float 3s ease-in-out infinite; opacity: 0.5;">🪔</div>
-                <div style="position: absolute; bottom: 100px; left: -20px; font-size: 40px; animation: float 4s ease-in-out infinite reverse; opacity: 0.5;">🕉️</div>
-            </div>
-        </div>
+<!-- Vastu Mandala Interactive Hero -->
+<section class="mandala-hero">
+    <div class="container container-narrow text-center" style="margin-bottom: var(--space-12);">
+        <h1 class="reveal brand-devanagari" style="font-size: 4rem; margin-bottom: 0;">वास्तु समीक्षा</h1>
+        <p class="reveal" style="font-size: var(--font-size-xl); color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; font-weight: 300;">
+            <?= $lang === 'hi' ? 'प्राचीन ज्ञान • आधुनिक जीवन' : 'Ancient Wisdom • Modern Living' ?>
+        </p>
     </div>
-</section>
 
-<!-- Trust Signals Banner -->
-<section class="trust-banner" style="background: var(--surface); padding: var(--space-8) 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-top: -30px; position: relative; z-index: 10;">
-    <div class="container">
-        <div class="grid grid-3 text-center" style="gap: var(--space-4);">
-            <div class="trust-card" style="padding: var(--space-6); background: var(--bg-color); border-radius: 12px; border: 1px solid var(--border-color);">
-                <div style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-bottom: var(--space-2);">15+</div>
-                <div style="color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">
-                    <?= $lang === 'hi' ? 'वर्षों का अनुभव' : 'Years of Experience' ?>
-                </div>
-            </div>
-            <div class="trust-card" style="padding: var(--space-6); background: var(--bg-color); border-radius: 12px; border: 1px solid var(--border-color);">
-                <div style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-bottom: var(--space-2);">5000+</div>
-                <div style="color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">
-                    <?= $lang === 'hi' ? 'संतुष्ट ग्राहक' : 'Clients Helped' ?>
-                </div>
-            </div>
-            <div class="trust-card" style="padding: var(--space-6); background: var(--bg-color); border-radius: 12px; border: 1px solid var(--border-color);">
-                <div style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-bottom: var(--space-2);">120+</div>
-                <div style="color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">
-                    <?= $lang === 'hi' ? 'शहरों में सेवाएं' : 'Cities Served' ?>
-                </div>
-            </div>
+    <div class="mandala-grid reveal">
+        <!-- North West: Vayu (Movement / Community) -->
+        <a href="<?= SOCIAL_WHATSAPP ?>" target="_blank" class="mandala-cell" data-dir="NW">
+            <span class="direction-label"><?= $lang === 'hi' ? 'उत्तर-पश्चिम' : 'North-West' ?></span>
+            <div class="cell-icon">💬</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'जुड़ें' : 'Connect' ?></h4>
+        </a>
+
+        <!-- North: Kuber (Wealth / Services) -->
+        <a href="#services" class="mandala-cell" data-dir="N">
+            <span class="direction-label"><?= $lang === 'hi' ? 'उत्तर' : 'North' ?></span>
+            <div class="cell-icon">💰</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'सेवाएं' : 'Services' ?></h4>
+        </a>
+
+        <!-- North East: Ishan (Wisdom / Quiz) -->
+        <a href="<?= BASE_URL ?>quiz" class="mandala-cell" data-dir="NE">
+            <span class="direction-label"><?= $lang === 'hi' ? 'उत्तर-पूर्व' : 'North-East' ?></span>
+            <div class="cell-icon">🧠</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'क्विज़' : 'Quiz' ?></h4>
+        </a>
+
+        <!-- West: Varuna (Knowledge / Ebooks) -->
+        <a href="<?= BASE_URL ?>ebooks" class="mandala-cell" data-dir="W">
+            <span class="direction-label"><?= $lang === 'hi' ? 'पश्चिम' : 'West' ?></span>
+            <div class="cell-icon">📚</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'ई-बुक्स' : 'E-books' ?></h4>
+        </a>
+
+        <!-- Center: Brahma Sthan (The Soul / Welcome) -->
+        <div class="mandala-cell center-cell">
+            <span class="direction-label"><?= $lang === 'hi' ? 'ब्रह्म स्थान' : 'Center' ?></span>
+            <h4 class="cell-title">ॐ</h4>
+            <p style="font-size: 0.7rem; color: var(--text-muted);"><?= $lang === 'hi' ? 'सत् चित्त आनन्द' : 'Truth Consciousness Bliss' ?></p>
         </div>
+
+        <!-- East: Indra (Energy / Blogs) -->
+        <a href="#blogs" class="mandala-cell" data-dir="E">
+            <span class="direction-label"><?= $lang === 'hi' ? 'पूर्व' : 'East' ?></span>
+            <div class="cell-icon">☀️</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'ज्ञान' : 'Blogs' ?></h4>
+        </a>
+
+        <!-- South West: Nairutya (Protection / Contact) -->
+        <a href="<?= BASE_URL ?>contact" class="mandala-cell" data-dir="SW">
+            <span class="direction-label"><?= $lang === 'hi' ? 'दक्षिण-पश्चिम' : 'South-West' ?></span>
+            <div class="cell-icon">🛡️</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'सम्पर्क' : 'Contact' ?></h4>
+        </a>
+
+        <!-- South: Yama (Stability / Testimonials) -->
+        <a href="#testimonials" class="mandala-cell" data-dir="S">
+            <span class="direction-label"><?= $lang === 'hi' ? 'दक्षिण' : 'South' ?></span>
+            <div class="cell-icon">🏛️</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'प्रमाण' : 'Reviews' ?></h4>
+        </a>
+
+        <!-- South East: Agni (Transformation / Numerology) -->
+        <a href="<?= BASE_URL ?>numerology-calculator" class="mandala-cell" data-dir="SE">
+            <span class="direction-label"><?= $lang === 'hi' ? 'दक्षिण-पूर्व' : 'South-East' ?></span>
+            <div class="cell-icon">🔥</div>
+            <h4 class="cell-title"><?= $lang === 'hi' ? 'अंक शास्त्र' : 'Calculator' ?></h4>
+        </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); text-align: center;" class="reveal">
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
+            <?= $lang === 'hi' ? 'नीचे देखें' : 'Explore More' ?>
+        </div>
+        <div style="width: 1px; height: 50px; background: linear-gradient(to bottom, var(--accent), transparent); margin: 0 auto;"></div>
     </div>
 </section>
 
