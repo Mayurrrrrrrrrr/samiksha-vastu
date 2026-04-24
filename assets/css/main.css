@@ -352,3 +352,56 @@ img { max-width: 100%; height: auto; display: block; }
     .mandala-cell .cell-title { font-size: 0.8rem; }
     .mandala-cell .cell-icon { font-size: 1.2rem; }
 }
+
+/* Sticky Menu Transformation */
+.mandala-grid.sticky-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 70px;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0;
+    z-index: 1000;
+    aspect-ratio: auto;
+    box-shadow: var(--shadow-md);
+    background: var(--bg-body);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mandala-grid.sticky-menu .mandala-cell {
+    padding: var(--space-2);
+    border: none;
+    border-right: 1px solid rgba(197, 160, 89, 0.05);
+}
+
+.mandala-grid.sticky-menu .mandala-cell .direction-label,
+.mandala-grid.sticky-menu .mandala-cell .cell-icon {
+    display: none;
+}
+
+.mandala-grid.sticky-menu .mandala-cell .cell-title {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.mandala-grid.sticky-menu .mandala-cell.center-cell .cell-title {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+    .mandala-grid.sticky-menu {
+        grid-template-columns: repeat(5, 1fr);
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .mandala-grid.sticky-menu .mandala-cell:nth-child(n+6) {
+        display: none; /* Hide less important links on mobile sticky to save space */
+    }
+}

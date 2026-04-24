@@ -3,6 +3,7 @@
  * Home Page - Vastu Samiksha
  */
 $pageTitle = $lang === 'hi' ? 'होम - वास्तु समीक्षा' : 'Home - Vastu Samiksha';
+$hideNavbar = true; // Tell the header to hide the navbar
 
 // Fetch latest blogs
 $db = getDB();
@@ -25,7 +26,7 @@ require __DIR__ . '/../../layouts/public_header.php';
         </p>
     </div>
 
-    <div class="mandala-grid reveal">
+    <div class="mandala-grid reveal" id="mandalaGrid">
         <!-- North West: Vayu (Movement / Community) -->
         <a href="<?= SOCIAL_WHATSAPP ?>" target="_blank" class="mandala-cell" data-dir="NW">
             <span class="direction-label"><?= $lang === 'hi' ? 'उत्तर-पश्चिम' : 'North-West' ?></span>
@@ -442,6 +443,19 @@ require __DIR__ . '/../../layouts/public_header.php';
 </section>
 
 <script>
+    // Sticky Mandala Menu logic
+    window.addEventListener('scroll', function() {
+        const grid = document.getElementById('mandalaGrid');
+        const hero = document.querySelector('.mandala-hero');
+        const threshold = hero.offsetHeight - 100;
+        
+        if (window.scrollY > threshold) {
+            grid.classList.add('sticky-menu');
+        } else {
+            grid.classList.remove('sticky-menu');
+        }
+    });
+
     function quickCalculate() {
         const name = document.getElementById('heroCalcName').value.trim();
         const dob = document.getElementById('heroCalcDob').value;

@@ -88,6 +88,7 @@ $langToggleUrl = BASE_URL . $currentRoute . '?' . http_build_query($_langParams)
 
 <body>
     <!-- Navbar -->
+    <?php if (!isset($hideNavbar) || !$hideNavbar): ?>
     <nav class="navbar" id="navbar" style="border-bottom: 1px solid var(--border-color); background: rgba(253, 248, 240, 0.95); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000;">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4) var(--space-6);">
             <!-- Brand Logo -->
@@ -104,31 +105,23 @@ $langToggleUrl = BASE_URL . $currentRoute . '?' . http_build_query($_langParams)
                 <a href="<?= BASE_URL ?>journey" class="nav-link <?= $currentRoute === 'journey' ? 'active' : '' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Journey</a>
                 <a href="<?= BASE_URL ?>packages" class="nav-link <?= $currentRoute === 'packages' ? 'active' : '' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Services</a>
                 <a href="<?= BASE_URL ?>game" class="nav-link <?= $currentRoute === 'game' ? 'active' : '' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Quiz</a>
+                
+                <?php if (isLoggedIn()): ?>
+                    <a href="<?= isConsultant() ? BASE_URL . 'consultant/dashboard' : BASE_URL . 'user/dashboard' ?>" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary);">Dashboard</a>
+                <?php else: ?>
+                    <a href="<?= BASE_URL ?>login" style="font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; color: var(--text-muted);">Login</a>
+                <?php endif; ?>
             </div>
 
-            <!-- Nav Actions -->
+            <!-- Nav Actions (Simplified) -->
             <div class="nav-actions" style="display: flex; gap: var(--space-4); align-items: center;">
-                <?php if (isLoggedIn()): ?>
-                    <a href="<?= isConsultant() ? BASE_URL . 'consultant/dashboard' : BASE_URL . 'user/dashboard' ?>" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-primary); font-weight: 500;">
-                        <?php if (isset($_SESSION['user_avatar']) && $_SESSION['user_avatar']): ?>
-                            <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-light);">
-                        <?php else: ?>
-                            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                                <?= mb_substr($_SESSION['user_name'] ?? 'U', 0, 1) ?>
-                            </div>
-                        <?php endif; ?>
-                        <span class="hide-mobile">Dashboard</span>
-                    </a>
-                <?php else: ?>
-                    <a href="<?= BASE_URL ?>login" class="btn btn-outline btn-sm" style="border-radius: var(--border-radius-full);">Client Login</a>
-                <?php endif; ?>
-                
                 <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" style="background: none; border: none; cursor: pointer; color: var(--primary);">
                     <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
                 </button>
             </div>
         </div>
     </nav>
+    <?php endif; ?>
     <div class="nav-menu-overlay" id="navOverlay"></div>
 
     <!-- Flash Messages -->

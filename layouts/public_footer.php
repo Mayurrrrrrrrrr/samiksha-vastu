@@ -254,7 +254,7 @@
         </div>
 
         <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid rgba(197, 160, 89, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.5px;">
-            <span>&copy; <?= date('Y') ?> SAMIKSHA VASTU. All rights reserved.</span>
+            <span>&copy; <?= date('Y') ?> SAMIKSHA VASTU. All rights reserved. • <a href="<?= BASE_URL ?>login" style="color: inherit; text-decoration: none;">Login</a></span>
             <span>Handcrafted by <a href="https://yuktaa.com" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">YUKTAA</a></span>
         </div>
     </div>
